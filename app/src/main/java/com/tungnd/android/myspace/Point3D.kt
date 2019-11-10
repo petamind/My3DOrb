@@ -1,21 +1,37 @@
 package com.tungnd.android.myspace
 
-import java.util.*
+import android.graphics.Color
 
-class Point3D {
-    var x: Float = 0f
-    var y: Float = 0f
-    var z: Float = 0f
-    constructor(x: Float, y: Float, z: Float){
+/**
+ * @author Tung Nguyen
+ */
+class Point3D(var x: Float, var y: Float, var z: Float, var maxColorScale: Float) : Comparable<Point3D> {
+    override fun compareTo(other: Point3D): Int {
+        return z.compareTo(other.z)
+    }
+
+    var color: Int = 0
+
+    init {
+        updateColor()
+    }
+
+    fun set(x: Float, y:Float, z: Float){
         this.x = x
         this.y = y
         this.z = z
+        updateColor()
     }
 
     fun translate(to: Point3D){
         x += to.x
         y += to.y
         z += to.z
+        updateColor()
+    }
+
+    private fun updateColor(){
+            color = Color.argb(((z + maxColorScale) *255 /maxColorScale / 2).toInt(), 0, 0, 0)
     }
 
     override fun toString(): String {
