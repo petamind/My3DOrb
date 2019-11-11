@@ -1,8 +1,9 @@
 package com.tungnd.android.myspace
 
 import android.content.Context
-import android.graphics.*
-import android.util.AttributeSet
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
 import android.view.SurfaceHolder
 import android.view.SurfaceHolder.Callback
 import android.view.SurfaceView
