@@ -1,18 +1,13 @@
 package com.tungnd.android.myspace
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
+import android.graphics.*
 import android.util.AttributeSet
 import android.view.SurfaceHolder
 import android.view.SurfaceHolder.Callback
 import android.view.SurfaceView
 import android.view.View
-import kotlin.math.acos
-import kotlin.math.cos
-import kotlin.math.pow
-import kotlin.math.sin
+import kotlin.math.*
 
 /**
  * @author Tung Nguyen
@@ -82,6 +77,7 @@ class Object3D: SurfaceView, Runnable, Callback, View.OnClickListener {
             canvas.drawColor(Color.WHITE)
 
             updatePoint3D()
+
             for(p in points){
                 paint.setColor(p.color)
                 canvas.drawPoint(p.x, p.y, paint)
@@ -109,7 +105,7 @@ class Object3D: SurfaceView, Runnable, Callback, View.OnClickListener {
     override fun surfaceCreated(holder: SurfaceHolder?) {
         center.x = width.toFloat()/2
         center.y = height.toFloat()/2
-        radius = width.toFloat()/3
+        radius = min(width, height).toFloat()/3
         updatePoint3D()
     }
 }
